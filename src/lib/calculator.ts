@@ -149,7 +149,8 @@ export function calculate(key: ObjectKey, seed = key): Verdict {
     Math.min(99.9, 82 + (blows % 7) + lung / 12 + (spec.size === "large" ? 3 : 0)).toFixed(1),
   );
 
-  const pick = <T,>(arr: T[], offset: number) => arr[Math.floor(r * arr.length + offset) % arr.length];
+  const pick = (arr: string[], offset: number): string =>
+    arr[Math.floor(r * arr.length + offset) % arr.length] ?? arr[0]!;
 
   return {
     spec,
