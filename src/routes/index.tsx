@@ -15,13 +15,13 @@ import { analyzeImage } from "@/lib/vision.functions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "How Many Blows? — AI Suffering Calculator 💨" },
+      { title: "Oothedaa!! — AI Blow Counting Calculator 💨" },
       {
         name: "description",
         content:
-          "Upload a tyre, ball or balloon and our unnecessary AI calculates how many human blows it takes to inflate it. Useless Project 3.0.",
+          "Oothedaa!! Upload a tyre, ball or balloon and our unnecessary AI calculates how many human blows it takes to inflate it.",
       },
-      { property: "og:title", content: "How Many Blows? — AI Suffering Calculator 💨" },
+      { property: "og:title", content: "Oothedaa!! — AI Blow Counting Calculator 💨" },
       {
         property: "og:description",
         content: "Scientifically questionable. Emotionally accurate. Just use a pump.",
