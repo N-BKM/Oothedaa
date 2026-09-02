@@ -105,12 +105,12 @@ export function lungStatus(pct: number): string {
 }
 
 export function easterEgg(key: ObjectKey, blows: number): string | null {
-  if (blows > 500) return "THIS IS NO LONGER A PROJECT. THIS IS A CRY FOR HELP.";
-  if (blows > 100) return "Please stop. Buy a pump.";
+  if (key === "other") return "This object appears to contain 0% willingness to be inflated.";
   if (key === "bicycle tyre") return "Ah yes. The classic human-powered bicycle pump.";
   if (key === "car tyre" || key === "truck tyre") return "You have made a terrible decision.";
   if (key === "balloon") return "Finally, a reasonable opponent.";
-  if (key === "other") return "This object appears to contain 0% willingness to be inflated.";
+  if (blows > 500) return "THIS IS NO LONGER A PROJECT. THIS IS A CRY FOR HELP.";
+  if (blows > 100) return "Please stop. Buy a pump.";
   return null;
 }
 
