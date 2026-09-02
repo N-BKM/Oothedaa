@@ -143,7 +143,8 @@ export function calculate(key: ObjectKey, seed: string = key): Verdict {
   const spec = OBJECT_DATA[key] ?? OBJECT_DATA.other;
   const r = seeded(seed);
   const volume = Number((spec.volumeMin + (spec.volumeMax - spec.volumeMin) * r).toFixed(1));
-  const blows = Math.ceil(volume / AIR_PER_BLOW);
+  // Air needed is the compressed air inside: volume × pressure (in atmospheres).
+  const blows = Math.ceil((volume * spec.pressure) / AIR_PER_BLOW);
   const seconds = blows * SECONDS_PER_BLOW[spec.size];
   const airExpelled = Number((blows * AIR_PER_BLOW).toFixed(1));
   const energy = Number((blows * ENERGY_PER_BLOW).toFixed(1));
