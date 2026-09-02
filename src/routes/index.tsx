@@ -363,13 +363,58 @@ function Results({
     }
   };
 
+  const inflatable = result.spec.inflatable;
+
+  if (!inflatable) {
+    return (
+      <section className="flex flex-col gap-6">
+        <div className="toon bg-card p-8 text-center">
+          <h2 className="text-4xl font-black md:text-5xl">🤨 THIS THING REFUSES TO INFLATE</h2>
+          {preview && (
+            <img
+              src={preview}
+              alt="Uploaded object that cannot be inflated"
+              className="mx-auto mt-5 h-40 w-40 rounded-2xl border-4 border-foreground object-cover"
+            />
+          )}
+          <p className="mt-5 text-2xl font-black">
+            Either I have no idea what this is, or it simply cannot be inflated.
+          </p>
+          <p className="mt-3 text-lg font-bold text-muted-foreground">
+            So there is nothing to calculate. No blows. No numbers. Only judgement.
+          </p>
+          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 text-xl font-black animate-wobble">
+            “{result.easterEgg ?? "This object appears to contain 0% willingness to be inflated."}”
+          </p>
+          <p className="toon-sm mx-auto mt-4 max-w-md bg-sun px-5 py-3 text-lg font-black">
+            “Congratulations, you made AI stare at something pointless. Twice.”
+          </p>
+        </div>
+
+        <div className="toon bg-sun p-8 text-center">
+          <h3 className="text-2xl font-black uppercase tracking-widest">Final Verdict</h3>
+          <p className="mt-3 text-3xl font-black">“Oothedaa!! …actually, don't. It won't work.”</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          <button
+            onClick={onAgain}
+            className="toon-sm bg-tangerine px-6 py-4 text-lg font-black transition-transform hover:-translate-y-1 active:translate-y-1 active:shadow-none"
+          >
+            🔄 Try A Real Inflatable
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-6">
       <div className="toon bg-card p-8 text-center">
         <h2 className="text-4xl font-black md:text-5xl">
           {result.spec.emoji} YOUR OBJECT HAS BEEN JUDGED
         </h2>
-        <p className="mt-3 text-lg font-bold">🔍 I have investigated the object…</p>
+        <p className="mt-3 text-xl font-bold">🔍 I have investigated the object…</p>
         {preview && (
           <img
             src={preview}
@@ -380,19 +425,20 @@ function Results({
         <p className="mt-5 text-2xl font-black">
           Detected object: {result.spec.label} {result.spec.emoji}
         </p>
-        <p className="text-sm font-bold text-muted-foreground">
+        <p className="text-base font-bold text-muted-foreground">
           Confidence: {confidence !== null ? `${confidence}%` : "chosen by a human, so 100%"}
         </p>
         <p className="mt-4 text-xl font-black">
           💨 Estimated air required: {result.volume} L
         </p>
-        <p className="text-xs text-muted-foreground">Scientifically questionable. Emotionally accurate.</p>
+        <p className="text-base text-muted-foreground">Scientifically questionable. Emotionally accurate.</p>
         {result.easterEgg && (
-          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 font-black animate-wobble">
+          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 text-xl font-black animate-wobble">
             “{result.easterEgg}”
           </p>
         )}
       </div>
+
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Stat emoji="💨" label="Total Blows" value={String(result.blows)} color="bg-sun" />
