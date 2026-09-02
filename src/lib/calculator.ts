@@ -136,7 +136,7 @@ export interface Verdict {
   easterEgg: string | null;
 }
 
-export function calculate(key: ObjectKey, seed = key): Verdict {
+export function calculate(key: ObjectKey, seed: string = key): Verdict {
   const spec = OBJECT_DATA[key] ?? OBJECT_DATA.other;
   const r = seeded(seed);
   const volume = Number((spec.volumeMin + (spec.volumeMax - spec.volumeMin) * r).toFixed(1));
