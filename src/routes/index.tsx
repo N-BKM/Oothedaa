@@ -138,10 +138,11 @@ function Home() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-10 px-4 py-10">
       <header className="text-center">
-        <p className="inline-block toon-sm bg-sun px-4 py-1 text-sm font-black uppercase tracking-widest animate-wobble">
-          Useless Project 3.0
+        <p className="inline-block toon-sm bg-sun px-6 py-2 text-3xl font-black uppercase tracking-widest animate-wobble md:text-5xl">
+          Oothedaa!!
         </p>
       </header>
+
 
       {stage === "landing" && <Landing onStart={() => setStage("upload")} />}
 
