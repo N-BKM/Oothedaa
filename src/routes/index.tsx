@@ -521,9 +521,11 @@ function HowWeCalculated() {
         </p>
         <p>We assume one human blow provides roughly {AIR_PER_BLOW} L of air.</p>
         <p>
-          Blows = volume ÷ {AIR_PER_BLOW} L (rounded up). Time = blows × 3.5–6 seconds depending on
-          size. Energy = blows × {ENERGY_PER_BLOW} kcal. Lung Exhaustion = blows × 2.5%, capped at
-          100%.
+          Tyres are pumped well above atmospheric pressure, so they swallow far more air than their
+          size suggests: blows = volume × pressure factor ÷ {AIR_PER_BLOW} L (rounded up). A balloon
+          sits at ~1.1×, a football ~1.9×, a car tyre ~3.2×, a bicycle tyre ~4.5× and a truck tyre
+          ~6×. Time = blows × 3.5–6 seconds depending on size. Energy = blows × {ENERGY_PER_BLOW}{" "}
+          kcal. Lung Exhaustion = blows × 2.5%, capped at 100%.
         </p>
         <p className="font-black text-foreground">
           This is an entertainment project, not a medical, engineering or tyre-inflation measurement
