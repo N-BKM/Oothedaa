@@ -169,5 +169,28 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 12% 18%, color-mix(in oklab, var(--sun) 45%, transparent) 0 12px, transparent 13px),
+      radial-gradient(circle at 88% 30%, color-mix(in oklab, var(--sky) 45%, transparent) 0 16px, transparent 17px),
+      radial-gradient(circle at 20% 82%, color-mix(in oklab, var(--bubblegum) 40%, transparent) 0 14px, transparent 15px),
+      radial-gradient(circle at 78% 88%, color-mix(in oklab, var(--lime) 40%, transparent) 0 10px, transparent 11px);
+    background-attachment: fixed;
   }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@utility toon {
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-pop);
+  border-radius: var(--radius);
+}
+
+@utility toon-sm {
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-pop-sm);
+  border-radius: var(--radius);
 }
