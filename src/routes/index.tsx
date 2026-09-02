@@ -165,7 +165,7 @@ function Home() {
             />
           )}
           <p className="text-2xl font-black">{LOADING_MESSAGES[msgIndex]}</p>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-lg text-muted-foreground">
             Please wait. Very important science is happening.
           </p>
         </section>
@@ -186,7 +186,7 @@ function Home() {
 
       <HowWeCalculated />
 
-      <footer className="pb-6 text-center text-xs text-muted-foreground">
+      <footer className="pb-6 text-center text-sm text-muted-foreground">
         Powered by questionable science and unnecessarily advanced technology.
       </footer>
     </main>
@@ -212,7 +212,7 @@ function Landing({ onStart }: { onStart: () => void }) {
       >
         🚀 CALCULATE MY SUFFERING
       </button>
-      <p className="mt-5 text-xs text-muted-foreground">
+      <p className="mt-5 text-base text-muted-foreground">
         Powered by questionable science and unnecessarily advanced technology.
       </p>
     </section>
@@ -252,7 +252,7 @@ function Uploader({
       >
         <p className="text-6xl">🛞</p>
         <p className="mt-4 text-lg font-black">Drop an image here, or click to choose one</p>
-        <p className="mt-1 text-sm text-muted-foreground">JPG · JPEG · PNG · WEBP · max 5 MB</p>
+        <p className="mt-1 text-base text-muted-foreground">JPG · JPEG · PNG · WEBP · max 5 MB</p>
       </div>
       <input
         ref={inputRef}
@@ -261,8 +261,8 @@ function Uploader({
         className="hidden"
         onChange={(e) => onFile(e.target.files?.[0])}
       />
-      {error && <p className="mt-4 font-bold text-destructive">{error}</p>}
-      <button onClick={onManual} className="mt-6 text-sm font-bold underline">
+      {error && <p className="mt-4 text-lg font-bold text-destructive">{error}</p>}
+      <button onClick={onManual} className="mt-6 text-base font-bold underline">
         No photo? Pick the object manually →
       </button>
     </section>
@@ -285,7 +285,7 @@ function ManualPicker({
       <h2 className="text-3xl font-black">
         {unknown ? "🤔 I have no idea what this is." : "😴 Our AI is taking a nap."}
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-lg text-muted-foreground">
         {unknown
           ? "Try uploading a clearer picture of a tyre, ball, balloon or another inflatable object."
           : error ?? "Pick the object manually and we'll carry on regardless."}
@@ -333,7 +333,7 @@ function Stat({
         {emoji} {label}
       </p>
       <p className="mt-2 text-4xl font-black">{value}</p>
-      {note && <p className="mt-2 text-xs font-bold opacity-80">{note}</p>}
+      {note && <p className="mt-2 text-base font-bold opacity-80">{note}</p>}
     </div>
   );
 }
@@ -479,8 +479,8 @@ function Results({
               style={{ width: `${result.lungExhaustion}%` }}
             />
           </div>
-          <p className="mt-2 text-sm font-black">{result.lungStatus}</p>
-          <p className="mt-1 text-[10px] text-muted-foreground">
+          <p className="mt-2 text-lg font-black">{result.lungStatus}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
             Lung Exhaustion is a completely unofficial metric created for entertainment.
           </p>
         </div>
@@ -515,7 +515,7 @@ function HowWeCalculated() {
       <summary className="cursor-pointer text-lg font-black">
         🤓 How did we calculate this?
       </summary>
-      <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+      <div className="mt-4 space-y-2 text-base text-muted-foreground">
         <p>
           We estimate the object's air volume using a predefined approximate value for its category.
         </p>
