@@ -15,13 +15,13 @@ import { analyzeImage } from "@/lib/vision.functions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "How Many Blows? — AI Suffering Calculator 💨" },
+      { title: "Oothedaa!! — AI Blow Counting Calculator 💨" },
       {
         name: "description",
         content:
-          "Upload a tyre, ball or balloon and our unnecessary AI calculates how many human blows it takes to inflate it. Useless Project 3.0.",
+          "Oothedaa!! Upload a tyre, ball or balloon and our unnecessary AI calculates how many human blows it takes to inflate it.",
       },
-      { property: "og:title", content: "How Many Blows? — AI Suffering Calculator 💨" },
+      { property: "og:title", content: "Oothedaa!! — AI Blow Counting Calculator 💨" },
       {
         property: "og:description",
         content: "Scientifically questionable. Emotionally accurate. Just use a pump.",
@@ -138,10 +138,11 @@ function Home() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-10 px-4 py-10">
       <header className="text-center">
-        <p className="inline-block toon-sm bg-sun px-4 py-1 text-sm font-black uppercase tracking-widest animate-wobble">
-          Useless Project 3.0
+        <p className="inline-block toon-sm bg-sun px-6 py-2 text-3xl font-black uppercase tracking-widest animate-wobble md:text-5xl">
+          Oothedaa!!
         </p>
       </header>
+
 
       {stage === "landing" && <Landing onStart={() => setStage("upload")} />}
 
@@ -164,7 +165,7 @@ function Home() {
             />
           )}
           <p className="text-2xl font-black">{LOADING_MESSAGES[msgIndex]}</p>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-lg text-muted-foreground">
             Please wait. Very important science is happening.
           </p>
         </section>
@@ -185,7 +186,7 @@ function Home() {
 
       <HowWeCalculated />
 
-      <footer className="pb-6 text-center text-xs text-muted-foreground">
+      <footer className="pb-6 text-center text-sm text-muted-foreground">
         Powered by questionable science and unnecessarily advanced technology.
       </footer>
     </main>
@@ -211,7 +212,7 @@ function Landing({ onStart }: { onStart: () => void }) {
       >
         🚀 CALCULATE MY SUFFERING
       </button>
-      <p className="mt-5 text-xs text-muted-foreground">
+      <p className="mt-5 text-base text-muted-foreground">
         Powered by questionable science and unnecessarily advanced technology.
       </p>
     </section>
@@ -251,7 +252,7 @@ function Uploader({
       >
         <p className="text-6xl">🛞</p>
         <p className="mt-4 text-lg font-black">Drop an image here, or click to choose one</p>
-        <p className="mt-1 text-sm text-muted-foreground">JPG · JPEG · PNG · WEBP · max 5 MB</p>
+        <p className="mt-1 text-base text-muted-foreground">JPG · JPEG · PNG · WEBP · max 5 MB</p>
       </div>
       <input
         ref={inputRef}
@@ -260,8 +261,8 @@ function Uploader({
         className="hidden"
         onChange={(e) => onFile(e.target.files?.[0])}
       />
-      {error && <p className="mt-4 font-bold text-destructive">{error}</p>}
-      <button onClick={onManual} className="mt-6 text-sm font-bold underline">
+      {error && <p className="mt-4 text-lg font-bold text-destructive">{error}</p>}
+      <button onClick={onManual} className="mt-6 text-base font-bold underline">
         No photo? Pick the object manually →
       </button>
     </section>
@@ -284,7 +285,7 @@ function ManualPicker({
       <h2 className="text-3xl font-black">
         {unknown ? "🤔 I have no idea what this is." : "😴 Our AI is taking a nap."}
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-lg text-muted-foreground">
         {unknown
           ? "Try uploading a clearer picture of a tyre, ball, balloon or another inflatable object."
           : error ?? "Pick the object manually and we'll carry on regardless."}
@@ -332,7 +333,7 @@ function Stat({
         {emoji} {label}
       </p>
       <p className="mt-2 text-4xl font-black">{value}</p>
-      {note && <p className="mt-2 text-xs font-bold opacity-80">{note}</p>}
+      {note && <p className="mt-2 text-base font-bold opacity-80">{note}</p>}
     </div>
   );
 }
@@ -362,13 +363,58 @@ function Results({
     }
   };
 
+  const inflatable = result.spec.inflatable;
+
+  if (!inflatable) {
+    return (
+      <section className="flex flex-col gap-6">
+        <div className="toon bg-card p-8 text-center">
+          <h2 className="text-4xl font-black md:text-5xl">🤨 THIS THING REFUSES TO INFLATE</h2>
+          {preview && (
+            <img
+              src={preview}
+              alt="Uploaded object that cannot be inflated"
+              className="mx-auto mt-5 h-40 w-40 rounded-2xl border-4 border-foreground object-cover"
+            />
+          )}
+          <p className="mt-5 text-2xl font-black">
+            Either I have no idea what this is, or it simply cannot be inflated.
+          </p>
+          <p className="mt-3 text-lg font-bold text-muted-foreground">
+            So there is nothing to calculate. No blows. No numbers. Only judgement.
+          </p>
+          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 text-xl font-black animate-wobble">
+            “{result.easterEgg ?? "This object appears to contain 0% willingness to be inflated."}”
+          </p>
+          <p className="toon-sm mx-auto mt-4 max-w-md bg-sun px-5 py-3 text-lg font-black">
+            “Congratulations, you made AI stare at something pointless. Twice.”
+          </p>
+        </div>
+
+        <div className="toon bg-sun p-8 text-center">
+          <h3 className="text-2xl font-black uppercase tracking-widest">Final Verdict</h3>
+          <p className="mt-3 text-3xl font-black">“Oothedaa!! …actually, don't. It won't work.”</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          <button
+            onClick={onAgain}
+            className="toon-sm bg-tangerine px-6 py-4 text-lg font-black transition-transform hover:-translate-y-1 active:translate-y-1 active:shadow-none"
+          >
+            🔄 Try A Real Inflatable
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-6">
       <div className="toon bg-card p-8 text-center">
         <h2 className="text-4xl font-black md:text-5xl">
           {result.spec.emoji} YOUR OBJECT HAS BEEN JUDGED
         </h2>
-        <p className="mt-3 text-lg font-bold">🔍 I have investigated the object…</p>
+        <p className="mt-3 text-xl font-bold">🔍 I have investigated the object…</p>
         {preview && (
           <img
             src={preview}
@@ -379,19 +425,20 @@ function Results({
         <p className="mt-5 text-2xl font-black">
           Detected object: {result.spec.label} {result.spec.emoji}
         </p>
-        <p className="text-sm font-bold text-muted-foreground">
+        <p className="text-base font-bold text-muted-foreground">
           Confidence: {confidence !== null ? `${confidence}%` : "chosen by a human, so 100%"}
         </p>
         <p className="mt-4 text-xl font-black">
           💨 Estimated air required: {result.volume} L
         </p>
-        <p className="text-xs text-muted-foreground">Scientifically questionable. Emotionally accurate.</p>
+        <p className="text-base text-muted-foreground">Scientifically questionable. Emotionally accurate.</p>
         {result.easterEgg && (
-          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 font-black animate-wobble">
+          <p className="toon-sm mx-auto mt-6 max-w-md bg-bubblegum px-5 py-3 text-xl font-black animate-wobble">
             “{result.easterEgg}”
           </p>
         )}
       </div>
+
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Stat emoji="💨" label="Total Blows" value={String(result.blows)} color="bg-sun" />
@@ -432,8 +479,8 @@ function Results({
               style={{ width: `${result.lungExhaustion}%` }}
             />
           </div>
-          <p className="mt-2 text-sm font-black">{result.lungStatus}</p>
-          <p className="mt-1 text-[10px] text-muted-foreground">
+          <p className="mt-2 text-lg font-black">{result.lungStatus}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
             Lung Exhaustion is a completely unofficial metric created for entertainment.
           </p>
         </div>
@@ -468,15 +515,17 @@ function HowWeCalculated() {
       <summary className="cursor-pointer text-lg font-black">
         🤓 How did we calculate this?
       </summary>
-      <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+      <div className="mt-4 space-y-2 text-base text-muted-foreground">
         <p>
           We estimate the object's air volume using a predefined approximate value for its category.
         </p>
         <p>We assume one human blow provides roughly {AIR_PER_BLOW} L of air.</p>
         <p>
-          Blows = volume ÷ {AIR_PER_BLOW} L (rounded up). Time = blows × 3.5–6 seconds depending on
-          size. Energy = blows × {ENERGY_PER_BLOW} kcal. Lung Exhaustion = blows × 2.5%, capped at
-          100%.
+          Tyres are pumped well above atmospheric pressure, so they swallow far more air than their
+          size suggests: blows = volume × pressure factor ÷ {AIR_PER_BLOW} L (rounded up). A balloon
+          sits at ~1.1×, a football ~1.9×, a car tyre ~3.2×, a bicycle tyre ~4.5× and a truck tyre
+          ~6×. Time = blows × 3.5–6 seconds depending on size. Energy = blows × {ENERGY_PER_BLOW}{" "}
+          kcal. Lung Exhaustion = blows × 2.5%, capped at 100%.
         </p>
         <p className="font-black text-foreground">
           This is an entertainment project, not a medical, engineering or tyre-inflation measurement

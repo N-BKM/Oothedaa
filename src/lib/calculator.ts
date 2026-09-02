@@ -29,19 +29,21 @@ export interface ObjectSpec {
   volumeMax: number;
   size: SizeClass;
   inflatable: boolean;
+  /** How many times atmospheric pressure the object is pumped to. */
+  pressure: number;
 }
 
 export const OBJECT_DATA: Record<ObjectKey, ObjectSpec> = {
-  "bicycle tyre": { key: "bicycle tyre", label: "Bicycle Tyre", emoji: "🚲", volumeMin: 3, volumeMax: 5, size: "small", inflatable: true },
-  "motorcycle tyre": { key: "motorcycle tyre", label: "Motorcycle Tyre", emoji: "🏍️", volumeMin: 15, volumeMax: 25, size: "medium", inflatable: true },
-  "car tyre": { key: "car tyre", label: "Car Tyre", emoji: "🚗", volumeMin: 35, volumeMax: 50, size: "large", inflatable: true },
-  "truck tyre": { key: "truck tyre", label: "Truck Tyre", emoji: "🚚", volumeMin: 150, volumeMax: 300, size: "large", inflatable: true },
-  football: { key: "football", label: "Football", emoji: "⚽", volumeMin: 5, volumeMax: 7, size: "small", inflatable: true },
-  basketball: { key: "basketball", label: "Basketball", emoji: "🏀", volumeMin: 7, volumeMax: 9, size: "small", inflatable: true },
-  volleyball: { key: "volleyball", label: "Volleyball", emoji: "🏐", volumeMin: 4, volumeMax: 5, size: "small", inflatable: true },
-  balloon: { key: "balloon", label: "Balloon", emoji: "🎈", volumeMin: 10, volumeMax: 15, size: "small", inflatable: true },
-  "inflatable toy": { key: "inflatable toy", label: "Inflatable Toy", emoji: "🛟", volumeMin: 5, volumeMax: 20, size: "medium", inflatable: true },
-  other: { key: "other", label: "Mystery Object", emoji: "❓", volumeMin: 6, volumeMax: 12, size: "medium", inflatable: false },
+  "bicycle tyre": { key: "bicycle tyre", label: "Bicycle Tyre", emoji: "🚲", volumeMin: 3, volumeMax: 5, size: "small", inflatable: true, pressure: 4.5 },
+  "motorcycle tyre": { key: "motorcycle tyre", label: "Motorcycle Tyre", emoji: "🏍️", volumeMin: 15, volumeMax: 25, size: "medium", inflatable: true, pressure: 3.2 },
+  "car tyre": { key: "car tyre", label: "Car Tyre", emoji: "🚗", volumeMin: 35, volumeMax: 50, size: "large", inflatable: true, pressure: 3.2 },
+  "truck tyre": { key: "truck tyre", label: "Truck Tyre", emoji: "🚚", volumeMin: 150, volumeMax: 300, size: "large", inflatable: true, pressure: 6 },
+  football: { key: "football", label: "Football", emoji: "⚽", volumeMin: 5, volumeMax: 7, size: "small", inflatable: true, pressure: 1.9 },
+  basketball: { key: "basketball", label: "Basketball", emoji: "🏀", volumeMin: 7, volumeMax: 9, size: "small", inflatable: true, pressure: 1.8 },
+  volleyball: { key: "volleyball", label: "Volleyball", emoji: "🏐", volumeMin: 4, volumeMax: 5, size: "small", inflatable: true, pressure: 1.6 },
+  balloon: { key: "balloon", label: "Balloon", emoji: "🎈", volumeMin: 2, volumeMax: 4, size: "small", inflatable: true, pressure: 1.1 },
+  "inflatable toy": { key: "inflatable toy", label: "Inflatable Toy", emoji: "🛟", volumeMin: 5, volumeMax: 20, size: "medium", inflatable: true, pressure: 1.1 },
+  other: { key: "other", label: "Mystery Object", emoji: "❓", volumeMin: 6, volumeMax: 12, size: "medium", inflatable: false, pressure: 1 },
 };
 
 export const MANUAL_CHOICES: ObjectKey[] = [
@@ -54,6 +56,7 @@ export const MANUAL_CHOICES: ObjectKey[] = [
 ];
 
 const SECONDS_PER_BLOW: Record<SizeClass, number> = { small: 3.5, medium: 4.5, large: 6 };
+
 
 // Deterministic pseudo-random from a string seed, so results are reproducible.
 function seeded(seed: string): number {
@@ -102,12 +105,12 @@ export function lungStatus(pct: number): string {
 }
 
 export function easterEgg(key: ObjectKey, blows: number): string | null {
-  if (blows > 500) return "THIS IS NO LONGER A PROJECT. THIS IS A CRY FOR HELP.";
-  if (blows > 100) return "Please stop. Buy a pump.";
+  if (key === "other") return "This object appears to contain 0% willingness to be inflated.";
   if (key === "bicycle tyre") return "Ah yes. The classic human-powered bicycle pump.";
   if (key === "car tyre" || key === "truck tyre") return "You have made a terrible decision.";
   if (key === "balloon") return "Finally, a reasonable opponent.";
-  if (key === "other") return "This object appears to contain 0% willingness to be inflated.";
+  if (blows > 500) return "THIS IS NO LONGER A PROJECT. THIS IS A CRY FOR HELP.";
+  if (blows > 100) return "Please stop. Buy a pump.";
   return null;
 }
 
@@ -140,7 +143,8 @@ export function calculate(key: ObjectKey, seed: string = key): Verdict {
   const spec = OBJECT_DATA[key] ?? OBJECT_DATA.other;
   const r = seeded(seed);
   const volume = Number((spec.volumeMin + (spec.volumeMax - spec.volumeMin) * r).toFixed(1));
-  const blows = Math.ceil(volume / AIR_PER_BLOW);
+  // Air needed is the compressed air inside: volume × pressure (in atmospheres).
+  const blows = Math.ceil((volume * spec.pressure) / AIR_PER_BLOW);
   const seconds = blows * SECONDS_PER_BLOW[spec.size];
   const airExpelled = Number((blows * AIR_PER_BLOW).toFixed(1));
   const energy = Number((blows * ENERGY_PER_BLOW).toFixed(1));
