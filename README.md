@@ -145,7 +145,6 @@ bun run dev
 ---
 
 ## The Science
-
 ```text
 Required Air ≈ Volume × Pressure
 Number of Blows ≈ Required Air ÷ Air per Blow
