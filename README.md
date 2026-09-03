@@ -98,11 +98,11 @@ bun run dev
 
 *The place where the questionable decisions begin.*
 
-![Object Detection](screenshots/detection.png)
+![Object Detection](src/Screenshot%202026-09-03%20135547.png))
 
 *AI attempts to figure out what you're trying to inflate.*
 
-![Results](screenshots/results.png)
+![Results](src/Screenshot%202026-09-03%20135627.png)
 
 *Your final blow count, lung exhaustion, energy usage and uselessness score.*
 
