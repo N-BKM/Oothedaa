@@ -94,7 +94,7 @@ bun run dev
 ## 📚 Project Documentation
 
 ### 📸 Screenshots
-[![Home Page](Oothedaa/blob/main/src/Screenshot%202026-09-03%20112016.png)
+[![Home Page](src/Screenshot%202026-09-03%20112016.png)
 
 *The place where the questionable decisions begin.*
 
