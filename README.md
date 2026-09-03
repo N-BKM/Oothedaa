@@ -3,7 +3,7 @@
 ### *How Many Blows?*
 > **The question nobody asked. The answer nobody needed.**
 
-## 🎯 Basic Details
+## Basic Details
 **Team Name:** Veruthe
 
 ### Team Members
@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 Project Description
+## Project Description
 Ever wondered how many times you'd have to blow to inflate a tyre, ball, or balloon?
 Probably not.
 **Oothedaa!!** is an AI-powered web app that identifies an inflatable object and estimates the number of human blows needed to inflate it.
@@ -20,7 +20,7 @@ Because apparenly, **we had AI and didn't know what else to do with it.**
 
 ---
 
-## 🤡 The Problem (that doesn't exist)
+## The Problem (that doesn't exist)
 What if you have:
 ❌ No pump
 ❌ No compressor
@@ -35,14 +35,14 @@ But you have:
 
 ---
 
-## 💡 The Solution (that nobody asked for)
+## The Solution (that nobody asked for)
 
-1. 📸 Upload an image.
-2. 🤖 AI identifies the object.
-3. 🧮 The app calculates the required blows.
-4. 🫁 Your lung exhaustion is estimated.
-5. 🔥 Energy usage is calculated.
-6. 🤡 You receive a **Uselessness Score**.
+1.  Upload an image.
+2.  AI identifies the object.
+3.  The app calculates the required blows.
+4.  Your lung exhaustion is estimated.
+5.  Energy usage is calculated.
+6.  You receive a **Uselessness Score**.
 
 If the AI can't identify it, you can simply select the object manually.
 Because sometimes even AI says:
@@ -50,7 +50,7 @@ Because sometimes even AI says:
 
 ---
 
-## 🛠️ Technical Details
+##  Technical Details
 
 ### Software
 **Languages:** TypeScript, JavaScript, HTML, CSS
@@ -61,11 +61,11 @@ Because sometimes even AI says:
 
 ### Hardware
 **None.**
-Unless you count **your lungs. 🫁**
+Unless you count **your lungs. **
 
 ---
 
-## ⚙️ Installation & Run
+##  Installation & Run
 
 ### Clone
 ```bash
@@ -91,7 +91,7 @@ bun run dev
 
 ---
 
-## 📚 Project Documentation
+## Project Documentation
 
 ### 📸 Screenshots
 ![Home Page](src/Screenshot%202026-09-03%20112016.png)
@@ -109,24 +109,24 @@ bun run dev
 ### 🔄 Workflow
 
 ```text
-📸 Upload Image
+ Upload Image
        ↓
-🤖 AI Detection
+ AI Detection
        ↓
-🧮 Calculate Blows
+ Calculate Blows
        ↓
-🫁 Lung Exhaustion
+ Lung Exhaustion
        ↓
-🔥 Energy Usage
+ Energy Usage
        ↓
-🤡 Uselessness Score
+ Uselessness Score
        ↓
-🏆 Final Verdict
+ Final Verdict
 ```
 
 ---
 
-## 👨‍💻 Team Contributions
+## Team Contributions
 
 **Niranjan B**
 
@@ -142,7 +142,7 @@ bun run dev
 
 ---
 
-## 🧪 The Science
+## The Science
 
 ```text
 Required Air ≈ Volume × Pressure
@@ -151,10 +151,10 @@ Number of Blows ≈ Required Air ÷ Air per Blow
 
 Then we add:
 
-🫁 Lung Exhaustion
-🔥 Energy Expenditure
-⏱️ Estimated Time
-🤡 Uselessness Score
+ Lung Exhaustion
+ Energy Expenditure
+ Estimated Time
+ Uselessness Score
 
 ### Scientific accuracy:
 
@@ -170,7 +170,7 @@ Then we add:
 
 ---
 
-# 🏆 Final Verdict
+# Final Verdict
 
 Could you use a pump?
 **Yes.**
