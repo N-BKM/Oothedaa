@@ -98,7 +98,7 @@ bun run dev
 
 *The place where the questionable decisions begin.*
 
-![Object Detection](src/Screenshot%202026-09-03%20135547.png))
+![Object Detection](src/Screenshot%202026-09-03%20135547.png)
 
 *AI attempts to figure out what you're trying to inflate.*
 
@@ -130,15 +130,17 @@ bun run dev
 
 **Niranjan B**
 
-* Project concept
-* UI/UX and frontend
+* Project concept and planning
+* UI/UX and frontend development
 * AI integration
-* Calculation logic
 * Testing and deployment
 
 **Tina Rachel Sibi**
 
-* [Contribution]
+* Project research and documentation
+* Backend and calculation logic
+* Uselessness score and result system
+* Testing and deployment support
 
 ---
 
